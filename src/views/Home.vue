@@ -3,6 +3,7 @@
     <el-menu :default-active="$route.path" router class="el-menu-demo" mode="horizontal" @select="handleSelect">
       <el-menu-item index="/">医院列表</el-menu-item>
       <el-menu-item index="/newsList">新闻列表</el-menu-item>
+      <el-menu-item index="/caseList">案例列表</el-menu-item>
     </el-menu>
     <router-view/>
   </div>

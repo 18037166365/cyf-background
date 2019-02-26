@@ -41,5 +41,15 @@ export default new Router({
       name: 'newsEdit',
       component: () => import('./views/News-edit.vue')
     },
+    {
+      path: '/caseList',
+      name: 'caseList',
+      component: () => import('./views/Case-list.vue'),
+    },
+    {
+      path: '/caseEdit',
+      name: 'caseEdit',
+      component: () => import('./views/Case-edit.vue')
+    },
   ]
 })
