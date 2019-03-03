@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form  v-loading="quillUpdateImg" ref="form" :model="form" label-width="80px">
-      <el-form-item label="图片">
+      <el-form-item label="图片(选填)">
         <el-upload
           class="avatar-uploader"
           :action="uploadUrl"
@@ -11,6 +11,9 @@
           <img v-if="form.headImg" :src="form.headImg" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
+      </el-form-item>
+         <el-form-item label="案例标题">
+        <el-input v-model="form.title" placeholder="请输入标题"></el-input>
       </el-form-item>
       <el-form-item label="客户姓名">
         <el-input v-model="form.name" placeholder="李先生, 王小姐"></el-input>
@@ -49,6 +52,7 @@ export default {
         imageUrl: '',
         editorContent: 'hahaah',
         form: {
+          title: '',
           name: '',
           age: '',
           content: '',
@@ -75,6 +79,7 @@ export default {
         addCase({...this.form, id: this.id}).then(res => {
           setTimeout(() => {
             this.quillUpdateImg = false
+            if(res.code===0)
             Message({
               message: res.msg,
               type: 'success'

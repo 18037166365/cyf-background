@@ -1,7 +1,6 @@
 <template>
   <div>
-    <el-button class="addButton" type="primary" @click="addCase">添加案例</el-button>
-    <el-table
+     <el-table
       :data="tableData"
       style="width: 100%"
       border>
@@ -10,22 +9,16 @@
         prop="updatedAt">
       </el-table-column>
       <el-table-column
-        label="客户头像">
-        <template slot-scope="scope">
-          <img class="logo" :src="scope.row.headImg" alt="">
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="案例描述"
-        prop="title">
-      </el-table-column>
-      <el-table-column
         label="客户姓名"
         prop="name">
       </el-table-column>
       <el-table-column
-        label="客户年龄"
-        prop="age">
+        label="联系方式"
+        prop="phoneNumber">
+      </el-table-column>
+      <el-table-column
+        label="留言内容"
+        prop="content">
       </el-table-column>
        <el-table-column
         fixed="right"
@@ -33,7 +26,6 @@
         width="100">
         <template slot-scope="scope">
           <el-button @click="deleteClick(scope.row)" type="text" size="small">删除</el-button>
-          <el-button  @click="editClick(scope.row)" type="text" size="small">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -45,7 +37,7 @@
 </template>
 
 <script>
-import {  getCaseList, deleteCase } from '../api/index.js'
+import {  getMessageList, deleteMessage } from '../api/index.js'
 import { getDate } from '../utils/axios.js'
 import { Message } from 'element-ui';
 
@@ -60,7 +52,7 @@ import { Message } from 'element-ui';
     },
     methods: {
       getList() {
-         getCaseList().then(res => {
+         getMessageList().then(res => {
           console.log('res: ', res);
             this.tableData = res.data
             this.tableData.map(item => {
@@ -69,14 +61,8 @@ import { Message } from 'element-ui';
             })
         })
       },
-      addCase() {
-        this.$router.push('/caseEdit')
-      },
-      editClick(e) {
-        this.$router.push('/caseEdit?id='+ e.id)
-      },
       deleteClick(e) {
-        deleteCase({
+        deleteMessage({
           id: e.id
         }).then(res => {
           Message({

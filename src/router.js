@@ -51,5 +51,10 @@ export default new Router({
       name: 'caseEdit',
       component: () => import('./views/Case-edit.vue')
     },
+    {
+      path: '/messageList',
+      name: 'messageList',
+      component: () => import('./views/Message-list.vue')
+    },
   ]
 })

@@ -22,4 +22,6 @@ export const addCase = (params) => http.post('/addCase', params)
 
 export const deleteCase = (params) => http.post('/deleteCase', params)
 
+export const getMessageList = (params) => http.get('/getMessagesList', params)
 
+export const deleteMessage = (params) => http.post('/deleteMessage', params)
