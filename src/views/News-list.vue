@@ -22,7 +22,7 @@
         label="操作"
         width="100">
         <template slot-scope="scope">
-          <el-button @click="deleteClick(scope.row)" type="text" size="small">查看</el-button>
+          <el-button @click="deleteClick(scope.row)" type="text" size="small">删除</el-button>
           <el-button  @click="editClick(scope.row)" type="text" size="small">编辑</el-button>
         </template>
       </el-table-column>
@@ -69,7 +69,7 @@ import { getDate } from '../utils/axios.js'
       editClick(e) {
         this.$router.push('/newsEdit?id='+ e.id)
       },
-      deleteClick() {
+      deleteClick(e) {
         deleteNews({
           id: e.id
         }).then(res => {
