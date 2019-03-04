@@ -42,4 +42,7 @@ export default {
 .ql-editor {
   min-height: 300px;
 }
+.el-pagination {
+  margin-top: 50px;
+}
 </style>

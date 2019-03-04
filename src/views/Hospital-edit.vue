@@ -47,7 +47,7 @@ export default {
         editorContent: 'hahaah',
         form: {
           name: '',
-          content: 'walawala',
+          content: '',
           logo: '',
         }
       }

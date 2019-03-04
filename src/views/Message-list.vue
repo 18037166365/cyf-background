@@ -30,9 +30,13 @@
       </el-table-column>
     </el-table>
 
-    <div class="pageWrap">
-
-    </div>
+    <el-pagination
+      v-show="count>10"
+      background
+      @current-change="currentChange"
+      layout="prev, pager, next"
+      :total="count">
+    </el-pagination>
   </div>
 </template>
 
@@ -44,7 +48,9 @@ import { Message } from 'element-ui';
   export default {
     data() {
       return {
-        tableData: []
+        tableData: [],
+        count: 0,
+        page: 1
       }
     },
     mounted() {
@@ -52,14 +58,21 @@ import { Message } from 'element-ui';
     },
     methods: {
       getList() {
-         getMessageList().then(res => {
+         getMessageList({
+           page: this.page
+         }).then(res => {
           console.log('res: ', res);
             this.tableData = res.data
+            this.count = res.count
             this.tableData.map(item => {
               item.updatedAt = getDate(item.updatedAt)
               return item
             })
         })
+      },
+       currentChange(e){
+        this.page = e;
+        this.getList()
       },
       deleteClick(e) {
         deleteMessage({

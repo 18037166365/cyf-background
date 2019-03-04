@@ -33,19 +33,20 @@ export default {
       return {
         quillUpdateImg: false,
         id: this.$route.query.id || null,
-        editorContent: 'hahaah',
+        editorContent: '',
+        count: 0,
         form: {
           title: '',
-          content: 'walawala',
+          content: '',
           hospitalImg: '',
-          from: '爱泰健康'
+          from: '爱泰健康',
         }
       }
     },
     created() {
       if(this.id) {
         getNewsList({
-          id: this.id
+          id: this.id,
         }).then(res => {
           console.log(res)
           this.form = res.data
@@ -63,12 +64,14 @@ export default {
         addNews({...this.form, id: this.id}).then(res => {
           console.log(res)
           setTimeout(() => {
-            this.quillUpdateImg = false
-            Message({
-              message: res.msg,
-              type: 'success'
-            });
-          }, 500)
+            if(res.code ===0) {
+              this.quillUpdateImg = false
+              Message({
+                message: res.msg,
+                type: 'success'
+              });
+            }
+          }, 50)
         }, err=> {
           this.quillUpdateImg = false
         })
