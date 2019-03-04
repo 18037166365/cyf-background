@@ -37,6 +37,7 @@
 <script>
 import { getNewsList, addNews, deleteNews } from '../api/index.js'
 import { getDate } from '../utils/axios.js'
+import { Message } from 'element-ui';
 
   export default {
     data() {

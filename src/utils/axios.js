@@ -29,7 +29,7 @@ export class http {
     }
     static handleError(respond) {
       Message({
-        message: '网络错误',
+        message: '网络繁忙, 请重试...',
         type: 'warning'
       });
       return new Error()
