@@ -44,7 +44,7 @@ const toolbarOptions = [
   ['clean']                                         // remove formatting button
 ]
 import baseUrl from '../utils/baseurl.js'
-const uploadUrl = 'http://upload.nlxiaoniao.cn'
+const uploadUrl = 'http://upload.dreamback.xyz'
 
     export default {
       props: {
