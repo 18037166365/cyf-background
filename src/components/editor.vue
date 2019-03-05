@@ -44,6 +44,7 @@ const toolbarOptions = [
   ['clean']                                         // remove formatting button
 ]
 import baseUrl from '../utils/baseurl.js'
+const uploadUrl = 'http://upload.nlxiaoniao.cn'
 
     export default {
       props: {
@@ -55,7 +56,7 @@ import baseUrl from '../utils/baseurl.js'
         data() {
             return {
                 quillUpdateImg: false, // 根据图片上传状态来确定是否显示loading动画，刚开始是false,不显示
-                serverUrl: baseUrl+ 'upload',  // 这里写你要上传的图片服务器地址
+                serverUrl: uploadUrl+ 'upload',  // 这里写你要上传的图片服务器地址
                 // header: {token: sessionStorage.token},  // 有的图片服务器要求请求头需要有token之类的参数，写在这里
                 detailContent: '', // 富文本内容
                 editorOption: {
