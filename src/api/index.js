@@ -2,6 +2,10 @@ import { http } from '../utils/axios'
 
 export const login = (params) => http.post('/login', params)
 
+export const auth = (params) => http.post('/auth', params)
+
+export const getAuth = (params) => http.get('/getAuth', params)
+
 export const getUser = (params) => http.get('/getUser', params)
 
 export const getHospitalList = (params) => http.get('/getHospitalList', params)

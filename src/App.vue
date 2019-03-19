@@ -8,13 +8,24 @@
 <script>
 import Home from './views/Home'
 import Login from './views/Login'
-
+import { auth, getAuth } from './api/index.js'
+// import axios from './utils/axios.js'
 
 export default {
   data() {
     return {
       isLogin: false
     }
+  },
+  created() {
+    const user=localStorage.getItem('user') || '';
+    const token=localStorage.getItem('token') || null;
+    getAuth().then(res => {
+      console.log('auth: res: ', res);
+      if(res.code==0) {
+        this.isLogin = true
+      }
+    })
   },
   name: 'app',
   components: {

@@ -31,7 +31,8 @@ import { login } from '../api/index.js'
           password: this.password
         }).then(res => {
           if(res.code===0) {
-            this.$emit('loigin', true)
+            this.$emit('loigin', true);
+            localStorage.setItem('token', res.tk)
           }
         })
         console.log('login!');

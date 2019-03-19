@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { Message } from 'element-ui';
 import axios from 'axios'
+import qs from 'qs'
 import baseUrl from './baseurl'
 console.log('baseUrl: ', baseUrl);
 
@@ -10,10 +11,25 @@ console.log('baseUrl: ', baseUrl);
 
 axios.defaults.timeout =  60000;
 axios.defaults.baseURL = baseUrl
-
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.common['Authorization'] = 'Bearer '+ localStorage.getItem('token');
 // const baseURL = process.env.baseURL
 console.log('process.env: ', process.env);
 // console.log('baseURL: ', baseURL);
+
+
+axios.interceptors.request.use(function (config) {
+  // 在发送请求之前做些什么
+  if(config.method === 'post'){
+    config.data = qs.stringify(config.data)
+  }
+  // config.headers.common['Authorization'] = 'Bearer ' + Vue.ls.get("BOBLOG_ADMIN_TOKEN");
+  return config;
+}, function (error) {
+  // 对请求错误做些什么
+  return Promise.reject(error);
+});
+
 export class http {
     static handleSuccess(respond) {
         const { data, status } = respond
